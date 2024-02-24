@@ -7,6 +7,11 @@ from starlette import status
 load_dotenv()
 app = FastAPI()
 
+
+
+card_route.update_database()  # Use 'await' here
+
+
 app.include_router(card_route.router)
 
 @app.get("/", status_code=status.HTTP_200_OK)

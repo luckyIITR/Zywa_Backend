@@ -7,7 +7,7 @@ router = APIRouter()
 
 
 @router.get("/update_db", status_code=status.HTTP_200_OK)
-async def update_database():
+def update_database():
     Card.dropcollection()
 
     files = os.listdir("data/")
@@ -53,8 +53,8 @@ async def get_card_status(identifier : str):
     if not card:
         return {"msg" : "No Data found"}
 
-    latest_status = max(card.STATUS_HISTORY, key=lambda x: x['TIMESTAMP'])
-    data = {"CARD_ID" : card.CARD_ID, "USER_CONTACT" : card.USER_CONTACT, "STATUS" : latest_status}
+    # latest_status = max(card.STATUS_HISTORY, key=lambda x: x['TIMESTAMP'])
+    data = {"CARD_ID" : card.CARD_ID, "USER_CONTACT" : card.USER_CONTACT, "STATUS_HISTORY" : card.STATUS_HISTORY}
     return data
 
 
