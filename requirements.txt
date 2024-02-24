@@ -1,0 +1,6 @@
+python-jose[cryptography]
+fastapi
+uvicorn
+python-multipart
+pandas
+pymongo
